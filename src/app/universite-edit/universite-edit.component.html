@@ -1,0 +1,35 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<body>
+<main id="main" class="main">
+  <div class="container">
+    <h2>Modifier l'université</h2>
+
+    <!-- Affichage des erreurs -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Formulaire de modification d'université -->
+    <form [formGroup]="universiteForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nomUniversite">Nom de l'université</label>
+        <input id="nomUniversite" formControlName="nomUniversite" class="form-control" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input id="adresse" formControlName="adresse" class="form-control" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="idFoyer">ID du foyer</label>
+        <input id="idFoyer" formControlName="idFoyer" class="form-control" type="number" />
+      </div>
+
+      <button type="submit" [disabled]="universiteForm.invalid" class="btn btn-primary">Mettre à jour</button>
+    </form>
+  </div>
+</main>
+</body>
+<app-footer></app-footer>

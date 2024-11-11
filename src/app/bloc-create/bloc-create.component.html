@@ -1,0 +1,44 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Créer un nouveau Bloc</h2>
+      <form [formGroup]="blocForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Nom du Bloc -->
+        <div class="form-group">
+          <label for="nomBloc">Nom du Bloc:</label>
+          <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" required>
+          <div *ngIf="blocForm.get('nomBloc')?.invalid && blocForm.get('nomBloc')?.touched" class="text-danger">
+            Le nom du bloc est requis.
+          </div>
+        </div>
+
+        <!-- Capacité du Bloc -->
+        <div class="form-group">
+          <label for="capaciteBloc">Capacité du Bloc:</label>
+          <input type="number" class="form-control" id="capaciteBloc" formControlName="capaciteBloc" required>
+          <div *ngIf="blocForm.get('capaciteBloc')?.invalid && blocForm.get('capaciteBloc')?.touched" class="text-danger">
+            La capacité doit être un nombre supérieur à 0.
+          </div>
+        </div>
+
+        <!-- ID du Foyer -->
+        <div class="form-group">
+          <label for="foyerId">ID du Foyer:</label>
+          <input type="number" class="form-control" id="foyerId" formControlName="foyerId" required>
+          <div *ngIf="blocForm.get('foyerId')?.invalid && blocForm.get('foyerId')?.touched" class="text-danger">
+            L'ID du foyer est requis.
+          </div>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <button type="submit" class="btn btn-primary">Créer Bloc</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>

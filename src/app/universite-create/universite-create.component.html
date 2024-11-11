@@ -1,0 +1,35 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Créer une nouvelle Université</h2>
+      <form [formGroup]="universiteForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Nom de l'Université -->
+        <div class="form-group">
+          <label for="nomUniversite">Nom de l'Université:</label>
+          <input type="text" class="form-control" id="nomUniversite" formControlName="nomUniversite" required>
+        </div>
+
+        <!-- Adresse -->
+        <div class="form-group">
+          <label for="adresse">Adresse:</label>
+          <input type="text" class="form-control" id="adresse" formControlName="adresse" required>
+        </div>
+
+        <!-- ID du Foyer -->
+        <div class="form-group">
+          <label for="idFoyer">ID du Foyer:</label>
+          <input type="number" class="form-control" id="idFoyer" formControlName="idFoyer" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Créer Université</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>

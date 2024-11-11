@@ -1,0 +1,41 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Modifier la Réclamation</h2>
+      <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Nom et Prénom -->
+        <div class="form-group">
+          <label for="nomprenom">Nom et Prénom:</label>
+          <input type="text" class="form-control" id="nomprenom" formControlName="nomprenom" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="mail">Email:</label>
+          <input type="email" class="form-control" id="mail" formControlName="mail" required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea class="form-control" id="description" formControlName="description" rows="3" required></textarea>
+        </div>
+
+        <!-- Date de Création -->
+        <div class="form-group">
+          <label for="dateCreation">Date de Création:</label>
+          <input type="date" class="form-control" id="dateCreation" formControlName="dateCreation" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" [disabled]="reclamationForm.invalid">Mettre à jour la Réclamation</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>

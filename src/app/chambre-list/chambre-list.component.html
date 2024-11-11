@@ -1,0 +1,50 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Liste des Chambres</h2>
+      <div class="mb-3">
+        <div class="search-bar">
+          <form class="search-form d-flex align-items-right" method="POST" action="">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+          </form>
+        </div><!-- Fin de la barre de recherche -->
+
+        <!-- Bouton "Ajouter une nouvelle chambre" -->
+        <button class="btn btn-success" (click)="redirectToCreateChambre()">Ajouter une nouvelle chambre</button>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Numéro de Chambre</th>
+            <th>Type</th>
+            <th>Bloc</th>
+            <th>Réservation</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let chambre of chambres">
+            <td>{{ chambre.idChambre }}</td>
+            <td>{{ chambre.numeroChambre }}</td>
+            <td>{{ chambre.typeC }}</td>
+            <td>{{ chambre.blocId}}</td> <!-- Adapté si le bloc a un champ 'nom' -->
+            <td>{{ chambre.reservations ? 'Réservée' : 'Non Réservée' }}</td>
+            <td>
+              <!-- Boutons d'action -->
+              <button (click)="redirectToEdit(chambre.idChambre)" class="btn btn-primary">Modifier</button>
+              <button (click)="supprimerChambre(chambre.idChambre)" class="btn btn-danger">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>

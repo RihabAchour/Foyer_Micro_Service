@@ -1,0 +1,40 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+  <div class="container">
+    <h2>Liste des Réclamations</h2>
+
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Table des réclamations -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nom et Prénom</th>
+          <th>Email</th>
+          <th>Description</th>
+          <th>Date de Création</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reclamation of reclamations">
+          <td>{{ reclamation.nomprenom }}</td>
+          <td>{{ reclamation.mail }}</td>
+          <td>{{ reclamation.description }}</td>
+          <td>{{ reclamation.dateCreation | date: 'shortDate' }}</td>
+          <td>
+            <a [routerLink]="['/reclamation-edit', reclamation.id]" class="btn btn-warning">Éditer</a>
+            <button (click)="deleteReclamation(reclamation.id)" class="btn btn-danger">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<app-footer></app-footer>

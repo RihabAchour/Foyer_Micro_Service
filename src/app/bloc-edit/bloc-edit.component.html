@@ -1,0 +1,35 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Modifier le Bloc</h2>
+      <form [formGroup]="blocForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Nom du Bloc -->
+        <div class="form-group">
+          <label for="nomBloc">Nom du Bloc:</label>
+          <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" required>
+        </div>
+
+        <!-- Capacité du Bloc -->
+        <div class="form-group">
+          <label for="capaciteBloc">Capacité du Bloc:</label>
+          <input type="number" class="form-control" id="capaciteBloc" formControlName="capaciteBloc" required>
+        </div>
+
+        <!-- Foyer (ID ou nom, selon votre besoin) -->
+        <div class="form-group">
+          <label for="foyer">Foyer:</label>
+          <input type="text" class="form-control" id="foyer" formControlName="foyer" required>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>

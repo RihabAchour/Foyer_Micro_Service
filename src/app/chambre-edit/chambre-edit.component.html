@@ -1,0 +1,48 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Modifier la Chambre</h2>
+      <form [formGroup]="chambreForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Numero de Chambre -->
+        <div class="form-group">
+          <label for="numeroChambre">Numero de Chambre:</label>
+          <input type="number" class="form-control" id="numeroChambre" formControlName="numeroChambre" required>
+        </div>
+
+        <!-- Type de Chambre -->
+        <div class="form-group">
+          <label for="typeC">Type de Chambre:</label>
+          <select class="form-control" id="typeC" formControlName="typeC" required>
+            <option value="SIMPLE">SIMPLE</option>
+            <option value="DOUBLE">DOUBLE</option>
+            <option value="SUITE">SUITE</option>
+          </select>
+        </div>
+
+        <!-- Bloc ID -->
+        <div class="form-group">
+          <label for="blocId">ID du Bloc:</label>
+          <input type="number" class="form-control" id="blocId" formControlName="blocId" required>
+        </div>
+
+        <!-- Réservation -->
+        <div class="form-group">
+          <label for="reservations">Réservation:</label>
+          <select class="form-control" id="reservations" formControlName="reservations" required>
+            <option value="reserver">Réservée</option>
+            <option value="non-reserver">Non Réservée</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Mettre à jour la Chambre</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>

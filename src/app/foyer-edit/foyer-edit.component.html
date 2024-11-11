@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Edit Foyer</h2>
+      <form [formGroup]="foyerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nomFoyer">Nom du Foyer:</label>
+          <input type="text" class="form-control" id="nomFoyer" formControlName="nomFoyer">
+        </div>
+        <div class="form-group">
+          <label for="capaciteFoyer">Capacité:</label>
+          <input type="number" class="form-control" id="capaciteFoyer" formControlName="capaciteFoyer">
+        </div>
+        <div class="form-group">
+          <label for="universiteId">ID de l'Université:</label>
+          <input type="number" class="form-control" id="universiteId" formControlName="universiteId">
+        </div>
+        <div class="form-group">
+          <label for="blocs">Blocs (optionnel):</label>
+          <input type="text" class="form-control" id="blocs" formControlName="blocs">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="foyerForm.invalid">Update Foyer</button>
+      </form>
+    </div>
+  </main>
+</body>
+<app-footer></app-footer>

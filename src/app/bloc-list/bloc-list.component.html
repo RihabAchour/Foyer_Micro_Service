@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<body>
+  <main id="main" class="main">
+    <div class="container">
+      <h2>Liste des Blocs</h2>
+      <div class="mb-3">
+        <!-- Bouton "Ajouter un bloc" -->
+        <button class="btn btn-success" (click)="redirectToCreateBloc()">Ajouter un nouveau bloc</button>
+      </div>
+
+      <!-- Tableau pour afficher les blocs -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Capacité</th>
+            <th>Foyer</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bloc of blocs">
+            <td>{{ bloc.idBloc }}</td>
+            <td>{{ bloc.nomBloc }}</td>
+            <td>{{ bloc.capaciteBloc }}</td>
+            <td>{{ bloc.foyer?.nomFoyer }}</td>
+            <td>
+              <!-- Boutons d'action -->
+              <button (click)="redirectToEditBloc(bloc.idBloc)" class="btn btn-primary">Modifier</button>
+              <button (click)="deleteBloc(bloc.idBloc)" class="btn btn-danger">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
+<app-footer></app-footer>
