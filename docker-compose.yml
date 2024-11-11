@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  
+
+ 
+  Bloc:
+    container_name: bloc
+    build: .\FoyerKaterEnnada
+    ports:
+      - "9096:8082"   
+    image: bloc
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/    
+    depends_on:
+      - Eureka
+    
+ 
+  Eureka:
+    container_name: eureka
+    build: .\Eureka
+    hostname: serviceregistry
+    ports:
+      - "8761:8761"   
+    image: eureka    
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+    
+      
+      
+  api-gateway:
+    build: .\Gateway
+    image: api-gateway
+    ports:
+      - "8086:8086"  # Port mapping pour l'API Gateway
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
+    depends_on:
+      - "Eureka"
+      - "Bloc"
