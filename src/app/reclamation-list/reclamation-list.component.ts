@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReclamationService } from '../reclamation.service';
 import { Reclamation } from '../reclamation.model';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-reclamation-list',
   templateUrl: './reclamation-list.component.html',
@@ -11,7 +11,8 @@ export class ReclamationListComponent implements OnInit {
   reclamations: Reclamation[] = []; // Tableau pour stocker les réclamations
   errorMessage: string = ''; // Pour gérer les erreurs
 
-  constructor(private reclamationService: ReclamationService) { }
+  constructor(private reclamationService: ReclamationService ,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getReclamations(); // Charger les réclamations à l'initialisation
@@ -30,17 +31,19 @@ export class ReclamationListComponent implements OnInit {
     });
   }
 
+ // Méthode pour rediriger vers la page de création d'une nouvelle réclamation
+ redirectToCreateReclamation(): void {
+  this.router.navigate(['/reclamation-create']);  // Redirection vers la page de création
+}
+
   // Supprimer une réclamation
   deleteReclamation(id: number): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette réclamation ?')) {
       this.reclamationService.deleteReclamation(id).subscribe({
         next: () => {
           this.getReclamations(); // Récupérer à nouveau la liste après suppression
+          this.router.navigate(['/reclamations']);
           console.log('Réclamation supprimée');
-        },
-        error: (err) => {
-          this.errorMessage = 'Erreur lors de la suppression de la réclamation';
-          console.error(err);
         }
       });
     }

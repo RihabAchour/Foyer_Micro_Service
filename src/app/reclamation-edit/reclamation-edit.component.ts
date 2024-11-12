@@ -12,6 +12,7 @@ import { Reclamation } from '../reclamation.model';
 export class ReclamationEditComponent implements OnInit {
   reclamationForm!: FormGroup;
   reclamationId!: number;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -42,6 +43,7 @@ export class ReclamationEditComponent implements OnInit {
       next: (data: Reclamation) => {
         // Pré-remplir le formulaire avec les données existantes
         this.reclamationForm.patchValue(data);
+       
       },
       error: (err) => {
         console.error('Erreur lors du chargement de la réclamation :', err);

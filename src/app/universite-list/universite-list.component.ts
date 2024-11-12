@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UniversiteService } from '../universite.service';
 import { Universite } from '../universite.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-universite-list',
@@ -12,7 +13,7 @@ export class UniversiteListComponent implements OnInit {
   errorMessage: string = '';
   loading: boolean = true;
 
-  constructor(private universiteService: UniversiteService) { }
+  constructor(private universiteService: UniversiteService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUniversites();
@@ -31,9 +32,12 @@ export class UniversiteListComponent implements OnInit {
     });
   }
 
-  editUniversite(id: number): void {
-    // Redirection vers la page d'édition
-    // Implémentez votre logique de navigation ici
+  redirectToCreateUniversite(): void {
+    this.router.navigate(['/universite-create']);
+  }
+
+  redirectToEditUniversite(id: number): void {
+    this.router.navigate([`/universite-edit/${id}`]);
   }
 
   deleteUniversite(id: number): void {

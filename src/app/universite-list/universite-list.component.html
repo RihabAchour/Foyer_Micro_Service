@@ -5,19 +5,21 @@
   <main id="main" class="main">
     <div class="container">
       <h2>Liste des Universités</h2>
+      <div class="mb-3">
+        <!-- Barre de recherche -->
+        <div class="search-bar">
+          <form class="search-form d-flex align-items-right" method="POST" action="">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+          </form>
+        </div>
 
-      <!-- Affichage des messages d'erreur s'il y en a -->
-      <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-      </div>
-
-      <!-- Affichage d'un message de chargement si les données sont en cours de récupération -->
-      <div *ngIf="loading" class="spinner-border text-primary" role="status">
-        <span class="sr-only">Chargement...</span>
+        <!-- Bouton "Ajouter une nouvelle université" -->
+        <button class="btn btn-success" (click)="redirectToCreateUniversite()">Ajouter une nouvelle université</button>
       </div>
 
       <!-- Tableau pour afficher les universités -->
-      <table class="table table-striped" *ngIf="universites && universites.length > 0">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
@@ -35,7 +37,7 @@
             <td>{{ universite.idFoyer }}</td>
             <td>
               <!-- Boutons pour éditer et supprimer -->
-              <button class="btn btn-primary btn-sm" (click)="editUniversite(universite.idUniversite)">
+              <button class="btn btn-primary btn-sm" (click)="redirectToEditUniversite(universite.idUniversite)">
                 Éditer
               </button>
               <button class="btn btn-danger btn-sm" (click)="deleteUniversite(universite.idUniversite)">
@@ -45,11 +47,6 @@
           </tr>
         </tbody>
       </table>
-
-      <!-- Message si aucune université n'est trouvée -->
-      <div *ngIf="universites && universites.length === 0" class="alert alert-info">
-        Aucune université trouvée.
-      </div>
     </div>
   </main>
 </body>
