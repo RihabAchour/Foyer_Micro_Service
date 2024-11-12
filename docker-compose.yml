@@ -1,0 +1,55 @@
+version: "3.9"
+services:
+  
+    
+  Chambre:
+    container_name: chambre
+    image: sarahzayati/chambreimg
+    build: .\Chambre
+    ports:
+      - "8091:8081"   
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
+    depends_on:
+      - "Eureka"
+
+ 
+ 
+  
+    
+ 
+  Eureka:
+    container_name: eurekaRihab
+    build: .\eureka
+    hostname: serviceregistry
+    ports:
+      - "8761:8761"   
+    image: sarahzayati/eureka    
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+    
+  
+
+      
+  api-gateway:
+    build: .\MS_API_ Gateway
+    image: sarahzayati/apigateway
+    ports:
+      - "8090:8090"  # Port mapping pour l'API Gateway
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
+    depends_on:
+      - "Eureka"
+      - "Chambre"
+     
+      
+  
+  
+  
+    
+
+
+
+
+  
+  
